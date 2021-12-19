@@ -4,10 +4,11 @@ const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+var fetchuser = require("../middleware/fetchuser");
 
 const JWT_SECRET = "notesapptokentobekeptsecret"; //for JWT purpose, enables secure communication between client and server
 
-//Create a user using: POST "/api/auth/createuser" . No login required
+// ROUTE1: Create a user using: POST "/api/auth/createuser" . No login required
 
 router.post(
   "/createuser",
@@ -67,7 +68,7 @@ router.post(
   }
 );
 
-//authenticate a user using: POST "/api/auth/login .. no login required
+//ROUTE 2: authenticate a user using: POST "/api/auth/login .. no login required
 
 router.post(
   "/login",
@@ -110,4 +111,17 @@ router.post(
     }
   }
 );
+
+//ROUTE 3: Get logged in user details using POST "/api/auth/getuser", login required
+router.post("/getuser", fetchuser, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(userId).select("-password");
+    res.send(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Can't get user data. server internal error");
+  }
+});
+
 module.exports = router;
