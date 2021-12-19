@@ -21,5 +21,5 @@ const UserSchema = new Schema({
   },
 });
 
-const User = mongoose.model("user", UserSchema);
+const User = mongoose.model("user", UserSchema); //this "user" is used as ref in notes.js model
 module.exports = User;
