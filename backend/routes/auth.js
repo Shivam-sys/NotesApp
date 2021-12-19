@@ -3,6 +3,9 @@ const router = express.Router();
 const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+const JWT_SECRET = "notesapptokentobekeptsecret"; //for JWT purpose, enables secure communication between client and server
 
 //Create a user using: POST "/api/auth/createuser" . No login required
 
@@ -37,7 +40,13 @@ router.post(
         email: req.body.email,
         password: secPass,
       });
-      res.json({ message: "User successfully created!", data: user });
+      const data = {
+        user: {
+          id: user.id,
+        },
+      };
+      const authToken = jwt.sign(data, JWT_SECRET);
+      res.json({ message: "User successfully created!", authToken });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Some unforeseen error occured");
