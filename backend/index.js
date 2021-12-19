@@ -4,7 +4,7 @@ const express = require("express");
 connectToMongo();
 
 const app = express();
-const port = 3000;
+const port = 3001; //kept 3001 for backend so that 3000 can be used for frontend react app
 
 app.use(express.json()); //A middleware, so that we can send json as a request... also to use req.body.
 
