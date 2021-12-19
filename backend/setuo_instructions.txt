@@ -1,0 +1,1 @@
+while installing nodemon -- npm i -D nodemon  -> this will make nodemon as devDependency
