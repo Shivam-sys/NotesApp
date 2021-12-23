@@ -26,3 +26,46 @@
 .mybgc-1 {
   background-color: #00cccc;
 }
+.linkactive {
+  text-decoration: underline;
+}
+.myhr {
+  width: 50%;
+  border-radius: 1px;
+  background-color: rgb(252, 165, 165);
+  color: none;
+  align-self: left;
+  border-top: 1px dotted;
+}
+
+#input_title {
+  font: bolder 25px poppins;
+  color: rgb(252, 165, 165);
+}
+#input_title::-moz-selection {
+  /*for Firefox */
+  color: #2c394b;
+  background: rgb(252, 165, 165);
+}
+
+#input_title::selection {
+  color: #2c394b;
+  background: #fca5a5;
+}
+#input_desc {
+  font: 20px poppins;
+  color: #00cccc;
+  resize: none;
+}
+#input_desc::-moz-selection {
+  /*for Firefox */
+  color: #2c394b;
+  background: #00cccc;
+}
+
+#input_desc::selection {
+  color: #2c394b;
+  background: #00cccc;
+  border-radius: 5px;
+  border: 0;
+}
