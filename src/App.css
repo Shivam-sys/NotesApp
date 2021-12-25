@@ -1,6 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Quicksand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito&family=Poppins:wght@300&display=swap");
 .myfont-1 {
-  font-family: poppins;
+  font-family: poppins, sans-serif;
+}
+.myfont-2 {
+  font-family: nunito, roboto;
 }
 .mycolor-4 {
   color: #082032;
@@ -36,6 +39,15 @@
   color: none;
   align-self: left;
   border-top: 1px dotted;
+}
+/*Hide scrollbar for chrome, Safari and Opera*/
+.custom-scroll::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.custom-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 #input_title {
