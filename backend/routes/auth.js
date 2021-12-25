@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 var fetchuser = require("../middleware/fetchuser");
 
-const JWT_SECRET = "notesapptokentobekeptsecret"; //for JWT purpose, enables secure communication between client and server
+const JWT_SECRET = process.env.JWT_SECRET; //for JWT purpose, enables secure communication between client and server
 
 // ROUTE1: Create a user using: POST "/api/auth/createuser" . No login required
 
