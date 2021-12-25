@@ -7,18 +7,18 @@ const Navbar = () => {
   return (
     <>
       <header className="text-gray-400 bg-gray-900 body-font shadow-md rounded-lg mx-2 bg-opacity-50 backdrop-filter backdrop-blur-lg">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col sm:flex-row items-center w-full"> 
+        <div className="container  mx-auto flex flex-wrap p-5 flex-col sm:flex-row justify-around items-center w-full">
           <Link
             to="/"
-            className="flex font-medium items-center text-white mb-4 sm:mb-0"
+            className="flex font-medium mb-4 sm:mb-0"
           >
-            <span className="ml-3 text-xl text-slate-300">NotesApp</span>
+            <span className="ml-3 text-xl text-slate-400 hover:text-gray-300">NotesApp</span>
           </Link>
-          <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+          <nav className="md:ml-auto flex flex-wrap items-center text-lg justify-center">
             <Link
               to="/"
               className={
-                "mr-5 mycolor-1 hover:text-red-300 text-lg myfont-1 " +
+                "mr-5 mycolor-1 hover:text-red-300 myfont-1 " +
                 `${
                   location.pathname === "/"
                     ? "underline decoration-red-300 decoration-dotted decoration-4 !text-red-300"
@@ -31,7 +31,7 @@ const Navbar = () => {
             <Link
               to="/user"
               className={
-                "mr-5 mycolor-1 hover:text-red-300 text-lg myfont-1 " +
+                "mr-5 mycolor-1 hover:text-red-300 myfont-1 " +
                 `${
                   location.pathname === "/user"
                     ? "underline decoration-red-300 decoration-dotted decoration-4 !text-red-300"
@@ -44,7 +44,7 @@ const Navbar = () => {
             <Link
               to="/about"
               className={
-                "mr-5 mycolor-1 hover:text-red-300 text-lg myfont-1 " +
+                "mr-5 mycolor-1 hover:text-red-300 myfont-1 " +
                 `${
                   location.pathname === "/about"
                     ? "underline decoration-red-300 decoration-dotted decoration-4 !text-red-300"
