@@ -11,6 +11,7 @@ const Notes = () => {
         {notes.map((note) => {
           return (
             <Noteitem
+              key={note._id}
               tag={note.tag}
               title={note.title}
               description={note.description}
