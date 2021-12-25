@@ -6,7 +6,7 @@ const Navbar = () => {
   let location = useLocation();
   return (
     <>
-      <header className="text-gray-400 bg-gray-900 body-font shadow-md rounded-lg mx-2 bg-opacity-50 backdrop-filter backdrop-blur-lg">
+      <header className="text-gray-400 bg-gray-900 body-font shadow-md rounded-lg md:mx-2 bg-opacity-50 backdrop-filter backdrop-blur-lg">
         <div className="container  mx-auto flex flex-wrap p-5 flex-col sm:flex-row justify-around items-center w-full">
           <Link
             to="/"
