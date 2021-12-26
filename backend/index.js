@@ -1,10 +1,13 @@
 const connectToMongo = require("./db");
 const express = require("express");
+var cors = require("cors");
 
 connectToMongo();
 
 const app = express();
 const port = 3001; //kept 3001 for backend so that 3000 can be used for frontend react app
+
+app.use(cors());
 
 app.use(express.json()); //A middleware, so that we can send json as a request... also to use req.body.
 

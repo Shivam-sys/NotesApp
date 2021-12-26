@@ -120,7 +120,7 @@ router.post("/getuser", fetchuser, async (req, res) => {
     res.send(user);
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Can't get user data. server internal error");
+    res.status(500).json({error:"Can't get user data. server internal error"});
   }
 });
 

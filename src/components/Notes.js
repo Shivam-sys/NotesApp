@@ -2,10 +2,14 @@ import React, { useContext } from "react";
 import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 import "../App.css";
+import { useEffect } from "react";
 const Notes = () => {
   const context = useContext(noteContext);
   // const { notes, addNote } = context;
-  const { notes } = context;
+  const { notes, getNotes } = context;
+  useEffect(() => {
+    getNotes();
+  },[10000]);
   return (
     <>
       <div className="custom-scroll flex gap-x-2 flex-wrap md:max-h-[88vh] md:overflow-y-scroll md:overflow-x-hidden rounded-sm">
