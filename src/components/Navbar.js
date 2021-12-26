@@ -8,11 +8,10 @@ const Navbar = () => {
     <>
       <header className="text-gray-400 bg-gray-900 body-font shadow-md rounded-lg md:mx-2 bg-opacity-50 backdrop-filter backdrop-blur-lg">
         <div className="container  mx-auto flex flex-wrap p-5 flex-col sm:flex-row justify-around items-center w-full">
-          <Link
-            to="/"
-            className="flex font-medium mb-4 sm:mb-0"
-          >
-            <span className="ml-3 text-xl text-slate-400 hover:text-gray-300">NotesApp</span>
+          <Link to="/" className="flex font-medium mb-4 sm:mb-0">
+            <span className="ml-3 text-xl text-slate-400 hover:text-gray-300">
+              NotesApp
+            </span>
           </Link>
           <nav className="md:ml-auto flex flex-wrap items-center text-lg justify-center">
             <Link
@@ -56,10 +55,10 @@ const Navbar = () => {
             </Link>
           </nav>
           <div>
-            <button className="inline-flex items-center myfont-1 border-0 py-1 px-3 focus:outline-none text-lg mt-4 sm:mt-0">
+            <button className="inline-flex items-center myfont-1 border-0 py-1 px-3 focus:outline-none hover:text-gray-300 text-lg mt-4 sm:mt-0">
               Signup
             </button>
-            <button className="inline-flex items-center mybgc-1 mycolor-3 myfont-1 border-0 py-1 px-3 focus:outline-none rounded text-lg mt-4 sm:mt-0">
+            <button className="inline-flex items-center bg-teal-500 hover:bg-teal-400 mycolor-3 myfont-1 border-0 py-1 px-3 focus:outline-none rounded text-lg mt-4 sm:mt-0">
               Login
             </button>
           </div>

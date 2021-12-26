@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../App.css";
+import noteContext from "../context/notes/noteContext";
 
 const Noteitem = (props) => {
+  const context = useContext(noteContext);
+  const { deleteNote } = context;
+  // const { note } = props;
   const month = [
     "Jan",
     "Feb",
@@ -39,9 +43,7 @@ const Noteitem = (props) => {
             </div>
           </div>
           <div className="pl-3 w-10/12">
-            {/* <h2 className="tracking-widest break-all text-xs font-medium text-red-400 mb-1">
-              {props.tag}
-            </h2> */}
+  
             <p
               className="text-xl break-all font-medium text-red-300 mb-3 truncate text-ellipsis"
               title={props.title}
@@ -56,7 +58,12 @@ const Noteitem = (props) => {
               <span className="w-[35px] p-1 hover:bg-teal-200 hover:border-0 hover:rounded-md hover:bg-opacity-20 cursor-pointer">
                 <i className="fa-regular fa-pen-to-square text-teal-500" />
               </span>
-              <span className="w-[35px] p-1 hover:bg-red-200 hover:border-0 hover:rounded-md hover:bg-opacity-20 cursor-pointer">
+              <span
+                className="w-[35px] p-1 hover:bg-red-200 hover:border-0 hover:rounded-md hover:bg-opacity-20 cursor-pointer"
+                onClick={() => {
+                  deleteNote(props.id);
+                }}
+              >
                 <i className="fa-regular fa-trash-can text-red-500" />
               </span>
             </div>

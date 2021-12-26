@@ -4,3 +4,5 @@ after that, go to package.json of front-end and add a script in the scripts ->
 "runboth": "concurrently \"npm run start\" \"nodemon backend/index.js\""
 ^as done in line 21 of this folder's package.json
 after that you can type command -> "npm run runboth" to execute both frontend and backend in the same terminal 
+
+Don't forget to use `npm i cors` if facing cors policy issues
