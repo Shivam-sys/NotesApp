@@ -35,15 +35,12 @@ const Noteitem = (props) => {
               </span>
             </div>
             <div className="p-2">
-              <h2 className="tracking-widest break-all truncate text-xs font-medium text-red-400 mb-1 myfont-2">
-                {props.tag}1<br />
-                {props.tag}2<br />
-                {props.tag}3<br />
+              <h2 className="tracking-widest break-all text-center truncate text-xs font-medium text-red-400 mb-1 myfont-2">
+                {props.tag}
               </h2>
             </div>
           </div>
           <div className="pl-3 w-10/12">
-  
             <p
               className="text-xl break-all font-medium text-red-300 mb-3 truncate text-ellipsis"
               title={props.title}

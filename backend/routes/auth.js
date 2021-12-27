@@ -50,7 +50,7 @@ router.post(
       res.json({ message: "User successfully created!", authToken });
     } catch (error) {
       console.error(error.message);
-      res.status(500).send("Some unforeseen error occured");
+      res.status(500).json({error:"Some unforeseen error occured"});
     }
     // .then((user) => res.json(user))
     // .catch((err) => {
@@ -107,7 +107,7 @@ router.post(
       console.error(error.message);
       res
         .status(500)
-        .send("Some internal server error occured while logging in");
+        .json({error:"Some internal server error occured while logging in"});
     }
   }
 );

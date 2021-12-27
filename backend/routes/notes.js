@@ -11,7 +11,7 @@ router.get("/fetchallnotes", fetchuser, async (req, res) => {
     res.json(notes);
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Error, Cannot get any note!");
+    res.status(500).json({ error: "Error, Cannot get any note!" });
   }
 });
 
@@ -38,7 +38,9 @@ router.post(
       res.json(savedNote);
     } catch (error) {
       console.error(error.message);
-      res.status(500).send("Error, Cannot create a note.");
+      res.status(500).json({
+        error: "Error, Cannot create a note. Description is required!",
+      });
     }
   }
 );
@@ -68,10 +70,10 @@ router.put(
       //Find the note to be updated using note id and update it
       let note = await Note.findById(req.params.id);
       if (!Note) {
-        return res.status(404).send("Note not found!");
+        return res.status(404).json({ error: "Note not found!" });
       }
       if (note.user.toString() !== req.user.id) {
-        return res.status(401).send("Not allowed");
+        return res.status(401).json({ error: "Not allowed" });
       }
       note = await Note.findByIdAndUpdate(
         req.params.id,
@@ -81,7 +83,7 @@ router.put(
       res.json({ note });
     } catch (error) {
       console.error(error.message);
-      res.status(500).send("Error, Cannot create a note.");
+      res.status(500).json({ error: "Error, Cannot create a note." });
     }
   }
 );
@@ -91,18 +93,20 @@ router.delete("/deletenote/:id", fetchuser, async (req, res) => {
     //Find the note to be deleted using note id.
     let note = await Note.findById(req.params.id);
     if (!Note) {
-      return res.status(404).send("Note not found!");
+      return res.status(404).json({ error: "Note not found!" });
     }
     //Check wether note owner is same as the person attempting to delete
     if (note.user.toString() !== req.user.id) {
-      return res.status(401).send("Not allowed");
+      return res.status(401).json({ error: "Not allowed" });
     }
     //delete the note
     note = await Note.findByIdAndDelete(req.params.id);
-    res.json({success: "Success! Note has been deleted"});
+    res.json({ success: "Success! Note has been deleted" });
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Error, Cannot delete a note. Internal server error!");
+    res
+      .status(500)
+      .json({ error: "Error, Cannot delete a note. Internal server error!" });
   }
 });
 module.exports = router;
