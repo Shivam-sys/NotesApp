@@ -23,7 +23,7 @@ router.post(
     //if errors are there in validating req, return bad request and errors.
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success: false, errors: errors.array() });
       //@ return res.send("Error occured");
     }
     //wrap everything in a try catch for any kind of unforeseen error.
@@ -31,9 +31,10 @@ router.post(
       // Check wether a user with same email exist or not.
       let user = await User.findOne({ email: req.body.email });
       if (user) {
-        return res
-          .status(400)
-          .json({ error: "User with same email already exist." });
+        return res.status(400).json({
+          success: false,
+          error: "User with same email already exist.",
+        });
       }
       //if no such email exist already then create a new user
       const salt = await bcrypt.genSalt(10); //generating salt
@@ -49,10 +50,12 @@ router.post(
         },
       };
       const authToken = jwt.sign(data, JWT_SECRET);
-      res.json({ message: "User successfully created!", authToken });
+      res.json({ success: true, authToken });
     } catch (error) {
       console.error(error.message);
-      res.status(500).json({ error: "Some unforeseen error occured" });
+      res
+        .status(500)
+        .json({ success: false, error: "Some unforeseen error occured" });
     }
     // .then((user) => res.json(user))
     // .catch((err) => {
@@ -123,9 +126,10 @@ router.post("/getuser", fetchuser, async (req, res) => {
     res.send(user);
   } catch (error) {
     console.error(error.message);
-    res
-      .status(500)
-      .json({ error: "Can't get user data. server internal error" });
+    res.status(500).json({
+      success: false,
+      error: "Can't get user data. server internal error",
+    });
   }
 });
 

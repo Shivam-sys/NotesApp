@@ -38,7 +38,7 @@ function Login() {
             className="block text-white text-sm font-bold mb-2"
             htmlFor="email"
           >
-            Username
+            Email
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-black"
@@ -47,7 +47,7 @@ function Login() {
             type="text"
             value={credentials.email}
             onChange={onChange}
-            placeholder="Username"
+            placeholder="Email"
           />
         </div>
         <div className="mb-6">
