@@ -6,3 +6,14 @@ after that, go to package.json of front-end and add a script in the scripts ->
 after that you can type command -> "npm run runboth" to execute both frontend and backend in the same terminal 
 
 Don't forget to use `npm i cors` if facing cors policy issues
+
+
+some userid and password:
+{
+  "email": "hishivam1@gmail.com",
+  "password": "password11"
+}
+{
+    "email":"kumar@gmail.com",
+    "password":"kumar"
+}

@@ -55,12 +55,18 @@ const Navbar = () => {
             </Link>
           </nav>
           <div>
-            <button className="inline-flex items-center myfont-1 border-0 py-1 px-3 focus:outline-none hover:text-gray-300 text-lg mt-4 sm:mt-0">
+            <Link
+              to="/signup"
+              className="inline-flex items-center myfont-1 border-0 py-1 px-3 focus:outline-none hover:text-gray-300 text-lg mt-4 sm:mt-0"
+            >
               Signup
-            </button>
-            <button className="inline-flex items-center bg-teal-600 hover:bg-teal-500 text-gray-100 myfont-1 border-0 py-1 px-3 focus:outline-none rounded text-lg  mt-4 sm:mt-0">
+            </Link>
+            <Link
+              to="/login"
+              className="inline-flex items-center bg-teal-600 hover:bg-teal-500 text-gray-100 myfont-1 border-0 py-1 px-3 focus:outline-none rounded text-lg  mt-4 sm:mt-0"
+            >
               Login
-            </button>
+            </Link>
           </div>
         </div>
       </header>

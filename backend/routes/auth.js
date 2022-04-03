@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
@@ -8,6 +9,7 @@ var fetchuser = require("../middleware/fetchuser");
 
 const JWT_SECRET = process.env.JWT_SECRET; //for JWT purpose, enables secure communication between client and server
 // console.log(process.env.JWT_SECRET);
+
 // ROUTE1: Create a user using: POST "/api/auth/createuser" . No login required
 
 router.post(
@@ -50,7 +52,7 @@ router.post(
       res.json({ message: "User successfully created!", authToken });
     } catch (error) {
       console.error(error.message);
-      res.status(500).json({error:"Some unforeseen error occured"});
+      res.status(500).json({ error: "Some unforeseen error occured" });
     }
     // .then((user) => res.json(user))
     // .catch((err) => {
@@ -80,7 +82,7 @@ router.post(
     //if errors are there in validating req, return bad request and errors.
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success: false, errors: errors.array() });
     }
     const { email, password } = req.body;
     try {
@@ -88,13 +90,13 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ error: "Login with correct credentials" });
+          .json({ success: false, error: "Login with correct credentials" });
       }
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
         return res
           .status(400)
-          .json({ error: "Login with correct credentials" });
+          .json({ success: false, error: "Invalid Password" });
       }
       const payload = {
         user: {
@@ -102,12 +104,13 @@ router.post(
         },
       };
       const authToken = jwt.sign(payload, JWT_SECRET);
-      res.json({ message: "Logged In!", authToken });
+      res.json({ success: true, authToken });
     } catch (error) {
       console.error(error.message);
-      res
-        .status(500)
-        .json({error:"Some internal server error occured while logging in"});
+      res.status(500).json({
+        success: false,
+        error: "Some internal server error occured while logging in",
+      });
     }
   }
 );
@@ -120,7 +123,9 @@ router.post("/getuser", fetchuser, async (req, res) => {
     res.send(user);
   } catch (error) {
     console.error(error.message);
-    res.status(500).json({error:"Can't get user data. server internal error"});
+    res
+      .status(500)
+      .json({ error: "Can't get user data. server internal error" });
   }
 });
 

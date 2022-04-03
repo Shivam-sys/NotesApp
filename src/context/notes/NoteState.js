@@ -4,28 +4,30 @@ const NoteState = (props) => {
   const host = "http://localhost:3001/api";
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
+  const auth_token = localStorage.getItem("token");
+  // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFjNmRlZjllNmQwYWQ3NGM1ZGQxNTYzIn0sImlhdCI6MTY0MDQyMzU0Nn0.UZSjLIsGhg-ryvSq_f78BiCB29JjOzzQJR3Rni_81yc";
 
-  //function to get all notes
+  // function to get all notes
   const getNotes = async () => {
     const response = await fetch(`${host}/notes/fetchallnotes`, {
       method: "GET",
       headers: {
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFjNmRlZjllNmQwYWQ3NGM1ZGQxNTYzIn0sImlhdCI6MTY0MDQyMzU0Nn0.UZSjLIsGhg-ryvSq_f78BiCB29JjOzzQJR3Rni_81yc",
+        "auth-token": auth_token,
+        // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFjNmRlZjllNmQwYWQ3NGM1ZGQxNTYzIn0sImlhdCI6MTY0MDQyMzU0Nn0.UZSjLIsGhg-ryvSq_f78BiCB29JjOzzQJR3Rni_81yc",
       },
     });
     const json = await response.json();
     // console.log(json);
-    setNotes(json);
+    await setNotes(json);
   };
+
   //function to add a new note
   const addNote = async (title, description, tag) => {
     // Make API call
     const response = await fetch(`${host}/notes/addnote`, {
       method: "POST",
       headers: {
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFjNmRlZjllNmQwYWQ3NGM1ZGQxNTYzIn0sImlhdCI6MTY0MDQyMzU0Nn0.UZSjLIsGhg-ryvSq_f78BiCB29JjOzzQJR3Rni_81yc",
+        "auth-token": auth_token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ title, description, tag }),
@@ -50,13 +52,12 @@ const NoteState = (props) => {
     const response = await fetch(`${host}/notes/updatenote/${id}`, {
       method: "PUT",
       headers: {
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFjNmRlZjllNmQwYWQ3NGM1ZGQxNTYzIn0sImlhdCI6MTY0MDQyMzU0Nn0.UZSjLIsGhg-ryvSq_f78BiCB29JjOzzQJR3Rni_81yc",
+        "auth-token": auth_token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ title, description, tag }),
     });
-    console.log(await response.json()) //to store the respose in a const
+    console.log(await response.json()); //to store the respose in a const
     //Logic to edit on client side
     for (let index = 0; index < notes.length; index++) {
       const element = notes[index];
@@ -73,8 +74,7 @@ const NoteState = (props) => {
     const response = await fetch(`${host}/notes/deletenote/${id}`, {
       method: "DELETE",
       headers: {
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFjNmRlZjllNmQwYWQ3NGM1ZGQxNTYzIn0sImlhdCI6MTY0MDQyMzU0Nn0.UZSjLIsGhg-ryvSq_f78BiCB29JjOzzQJR3Rni_81yc",
+        "auth-token": auth_token,
       },
     });
     const resp = await response.json(); //to store the respose in a const
