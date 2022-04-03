@@ -51,10 +51,19 @@ const Noteitem = (props) => {
               {props.description.slice(0, 100) +
                 (props.description.length > 100 ? "..." : "")}
             </p>
-            <div className="flex absolute top-1 right-1 text-center">
-              <span className="w-[35px] p-1 hover:bg-teal-200 hover:border-0 hover:rounded-md hover:bg-opacity-20 cursor-pointer">
+            <div className="flex text-center">
+              {/* *Note Update functionality issues. */}
+              {/* <span
+                className="w-[35px] p-1 hover:bg-teal-200 hover:border-0 hover:rounded-md hover:bg-opacity-20 cursor-pointer"
+                Update
+                functionality
+                disabled
+                onClick={() => {
+                  props.updateNote(props.id);
+                }}
+              >
                 <i className="fa-regular fa-pen-to-square text-teal-500" />
-              </span>
+              </span> */}
               <span
                 className="w-[35px] p-1 hover:bg-red-200 hover:border-0 hover:rounded-md hover:bg-opacity-20 cursor-pointer"
                 onClick={() => {

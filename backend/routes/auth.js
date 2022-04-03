@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 var fetchuser = require("../middleware/fetchuser");
 
 const JWT_SECRET = process.env.JWT_SECRET; //for JWT purpose, enables secure communication between client and server
-
+// console.log(process.env.JWT_SECRET);
 // ROUTE1: Create a user using: POST "/api/auth/createuser" . No login required
 
 router.post(

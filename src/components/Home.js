@@ -6,7 +6,7 @@ export const Home = () => {
   return (
     <>
       <div>
-        <NoteInput />
+        <NoteInput width="1/3" />
         <Notes/>
       </div>
     </>

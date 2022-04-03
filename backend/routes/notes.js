@@ -8,6 +8,7 @@ const { body, validationResult } = require("express-validator");
 router.get("/fetchallnotes", fetchuser, async (req, res) => {
   try {
     const notes = await Note.find({ user: req.user.id });
+    // $notes = myqdaqli_fetcharray("select * fro..")
     res.json(notes);
   } catch (error) {
     console.error(error.message);
@@ -35,7 +36,7 @@ router.post(
         user: req.user.id,
       });
       const savedNote = await note.save();
-      res.json(savedNote);
+      res.json({success:"Note saved"});
     } catch (error) {
       console.error(error.message);
       res.status(500).json({
@@ -101,7 +102,7 @@ router.delete("/deletenote/:id", fetchuser, async (req, res) => {
     }
     //delete the note
     note = await Note.findByIdAndDelete(req.params.id);
-    res.json({ success: "Success! Note has been deleted" });
+    res.json({ success: "Note deleted" });
   } catch (error) {
     console.error(error.message);
     res
