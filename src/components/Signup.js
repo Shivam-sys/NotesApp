@@ -49,6 +49,8 @@ function Signup() {
             value={info.name}
             onChange={onChange}
             placeholder="Name"
+            minLength={3}
+            required={true}
           />
         </div>
         <div className="mb-4">
@@ -62,10 +64,11 @@ function Signup() {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-black"
             id="email"
             name="email"
-            type="text"
+            type="email"
             value={info.email}
             onChange={onChange}
             placeholder="Email"
+            required={true}
           />
         </div>
         <div className="mb-6">
@@ -83,6 +86,8 @@ function Signup() {
             value={info.password}
             onChange={onChange}
             placeholder="********"
+            minLength={5}
+            required={true}
           />
         </div>
         <div className="flex items-center justify-between">

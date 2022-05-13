@@ -1,9 +1,15 @@
 import React from "react";
 import "../App.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  let navigate = useNavigate();
   let location = useLocation();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    console.log("Nav to login");
+    navigate("/login");
+  };
   return (
     <>
       <header className="text-gray-400 bg-gray-900 body-font shadow-md rounded-lg md:mx-2 bg-opacity-50 backdrop-filter backdrop-blur-lg">
@@ -55,18 +61,30 @@ const Navbar = () => {
             </Link>
           </nav>
           <div>
-            <Link
-              to="/signup"
-              className="inline-flex items-center myfont-1 border-0 py-1 px-3 focus:outline-none hover:text-gray-300 text-lg mt-4 sm:mt-0"
-            >
-              Signup
-            </Link>
-            <Link
-              to="/login"
-              className="inline-flex items-center bg-teal-600 hover:bg-teal-500 text-gray-100 myfont-1 border-0 py-1 px-3 focus:outline-none rounded text-lg  mt-4 sm:mt-0"
-            >
-              Login
-            </Link>
+            {!localStorage.getItem("token") ? (
+              <>
+                <Link
+                  to="/signup"
+                  className="inline-flex items-center myfont-1 border-0 py-1 px-3 focus:outline-none hover:text-gray-300 text-lg mt-4 sm:mt-0"
+                >
+                  Signup
+                </Link>
+                <Link
+                  to="/login"
+                  className="inline-flex items-center bg-teal-600 hover:bg-teal-500 text-gray-100 myfont-1 border-0 py-1 px-3 focus:outline-none rounded text-lg  mt-4 sm:mt-0"
+                >
+                  Login
+                </Link>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="inline-flex items-center bg-teal-600 hover:bg-teal-500 text-gray-100 myfont-1 border-0 py-1 px-3 focus:outline-none rounded text-lg  mt-4 sm:mt-0"
+                onClick={handleLogout}
+              >
+                Logout
+              </Link>
+            )}
           </div>
         </div>
       </header>

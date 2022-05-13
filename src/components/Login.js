@@ -21,8 +21,15 @@ function Login() {
     console.log(json);
     if (json.success) {
       // Save auth token and redirect
+      console.log("saving token...");
       localStorage.setItem("token", json.authToken);
-      navigate("/");
+      console.log("navigating to /");
+      if (localStorage.hasOwnProperty("token")) {
+        navigate("/");
+        window.location.reload(false);
+      } else {
+        alert("Some Error Occured, try logging in again");
+      }
     } else {
       alert(`${json.error}`);
     }
@@ -48,6 +55,7 @@ function Login() {
             value={credentials.email}
             onChange={onChange}
             placeholder="Email"
+            required={true}
           />
         </div>
         <div className="mb-6">
@@ -65,6 +73,7 @@ function Login() {
             value={credentials.password}
             onChange={onChange}
             placeholder="********"
+            required={true}
           />
         </div>
         <div className="flex items-center justify-between">
@@ -75,8 +84,8 @@ function Login() {
             Sign In
           </button>
           <a
-            className="inline-block align-baseline font-bold text-sm text-gray-300 hover:text-white "
-            href="#"
+            className="inline-block align-baseline font-bold text-sm text-gray-300 hover:text-white"
+            href="/#"
           >
             Forgot Password?
           </a>
