@@ -24,6 +24,7 @@ function Signup() {
       // Save auth token and redirect
       localStorage.setItem("token", json.authToken);
       navigate("/");
+      window.location.reload();
     } else {
       alert(`${json.error}`);
     }
